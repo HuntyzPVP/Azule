@@ -1,5 +1,6 @@
 package org.Azule.handlers;
 
+import org.Azule.handlers.io.Config;
 import org.Azule.utilites.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -7,6 +8,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class GameModeHandler {
+
+    private final Config config;
+
+    public GameModeHandler(Config config) {
+        this.config = config;
+    }
 
     // Function used if there is a target
 
@@ -18,36 +25,30 @@ public class GameModeHandler {
 
     public void updateGameMode(CommandSender sender, Player target, GameMode gm) {
 
-        // Checks if the sender has permission to run the command
-
-        if (!(sender.hasPermission("Server.Command.gm_target") || sender.hasPermission("Server.*"))) {
-            sender.sendMessage(Utils.chatColor("&bAzule&8 | &cYou are not permitted to run this command."));
+        if (!(sender.hasPermission("Azule.Command.gm_target") || sender.hasPermission("Azule.*"))) { // Checks if the sender has permission to run the command
+            sender.sendMessage(Utils.chatColor(config.getString("general.messages.no_permission")));
             return;
         }
 
-        // Checks if target is invalid or offline
-
-        if (target == null) {
-            sender.sendMessage(Utils.chatColor("&bAzule&8 | &cThe target you have entered is invalid."));
+        if (target == null) { // Checks if the target mentioned in argument 0 is valid
+            sender.sendMessage(Utils.chatColor(config.getString("general.messages.invalid_target")));
             return;
         }
 
-        // Checks if target is already in the desired GameMode
-
-        if (target.getGameMode().equals(gm)) {
-            sender.sendMessage(Utils.chatColor("&bAzule&8 | &cThe target's gamemode is already " + gm.name()));
+        if (target.getGameMode().equals(gm)) { // Checks to make sure the target isn't already in the desired gamemode
+            sender.sendMessage(Utils.chatColor(config.getString("gamemode.messages.gamemode_target_already")
+                    .replace("%target%", target.getName()).replace("%gamemode%", gm.name())));
             return;
         }
 
-        // Updates the targets GameMode and sends the target a message
+        target.setGameMode(gm); // Updates the targets gamemode
+        target.sendMessage(Utils.chatColor(config.getString("gamemode.messages.gamemode_update") // Sends the target a message letting them know there gamemode has been updated
+                .replace("%gamemode%", gm.name())));
 
-        target.setGameMode(gm);
-        target.sendMessage(Utils.chatColor("&bAzule&8 | &7Your gamemode has been updated to " + gm.name()));
-
-        // Checks if the target is not themselves, if it is, it will not send them a message saying they have updated the targets GameMode
-
-        if (!target.equals(sender))
-            sender.sendMessage(Utils.chatColor("&bAzule&8 | &7" + target.getName() + " gamemode has been updated to " + gm.name()));
+        if (!target.equals(sender)) { // Checks if the target is not themselves, if it is, it will not send them a message saying they have updated the targets GameMode
+            sender.sendMessage(Utils.chatColor(config.getString("gamemode.messages.gamemode_target_update")
+                    .replace("%target%", target.getName()).replace("%gamemode%", gm.name())));
+        }
     }
 
     // Function used if there is no target
@@ -59,31 +60,25 @@ public class GameModeHandler {
 
     public void updateGameMode(CommandSender sender, GameMode gm) {
 
-        // Checks if the sender is the console
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(Utils.chatColor("&bAzule&8 | &cMust enter a target!"));
+        if (!(sender instanceof Player)) { // Checks if the sender is console
+            sender.sendMessage(Utils.chatColor(config.getString("general.messages.target_required")));
             return;
         }
 
-        // Checks if the sender has permission to run the command
-
-        Player player = (Player) sender;
-        if (!(player.hasPermission("Server.Command.gm") || player.hasPermission("Server.*"))) {
-            sender.sendMessage(Utils.chatColor("&bAzule&8 | &cYou are not permitted to run this command."));
+        Player player = (Player) sender; // Makes the sender a Player object after confirmed console isn't the sender
+        if (!(player.hasPermission("Azule.Command.gm") || player.hasPermission("Azule.*"))) { // Checks if the sender has permission to run the command
+            sender.sendMessage(Utils.chatColor(config.getString("general.messages.no_permission")));
             return;
         }
 
-        // Checks if sender is already in the desired GameMode
-
-        if (player.getGameMode().equals(gm)) {
-            sender.sendMessage(Utils.chatColor("&bAzule&8 | &cYou are already in gamemode " + gm.name()));
+        if (player.getGameMode().equals(gm)) { // Checks if the sender is already in there desired gamemode
+            sender.sendMessage(Utils.chatColor(config.getString("gamemode.messages.gamemode_already")
+                    .replace("%gamemode%", gm.name())));
             return;
         }
 
-        // Updates the senders GameMode and sends them a message saying it has been updated
-
-        player.setGameMode(gm);
-        player.sendMessage(Utils.chatColor("&bAzule&8 | &7Your gamemode has been updated to " + gm.name()));
+        player.setGameMode(gm); // Updates gamemode
+        player.sendMessage(Utils.chatColor(config.getString("gamemode.messages.gamemode_update") // Sends the sender a message letting them know there gamemode has been updated
+                .replace("%gamemode%", gm.name())));
     }
 }

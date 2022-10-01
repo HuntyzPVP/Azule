@@ -1,0 +1,31 @@
+general:
+  messages:
+    no_permission: '&bAzule &8> &cYou are not permitted to do this.'
+    no_console: '&bAzule &8> &cYou cannot do this inside of the terminal.'
+    invalid_target: '&bAzule &8> &cTarget provided was invalid or offline.'
+    target_required: '&bAzule &8> &cMust provide a target.'
+  exceptions:
+    numberformatexception: '&bAzule &8> &cInvalid number provided.'
+
+gamemode:
+  messages:
+    gamemode_already: '&bAzule &8> &cYou are already in gamemode %gamemode%.'
+    gamemode_target_already: '&bAzule &8> &c%target% is already in %gamemode%.'
+    gamemode_update: '&bAzule &8> &7Your gamemode has been updated to %gamemode%.'
+    gamemode_target_update: '&bAzule &8> &7%target% is now in %gamemode%.'
+
+heal:
+  messages:
+    health_max: '&bAzule &8> &cYou are already at max health.'
+    health_target_max: '&bAzule &8> &c%target% is already at max health.'
+    healed: '&bAzule &8> &7You have been healed.'
+    healed_target: '&bAzule &8> &7%target% has been healed.'
+
+sethealth:
+  messages:
+    health_set: '&bAzule &8> &7Health has been set to %new_health%.'
+    health_already: '&bAzule &8> &cHealth is already %new_health%.'
+    health_target_set: '&bAzule &8> &7%target% has a new health value of %new_health%.'
+    health_target_already: '&bAzule &8> &c%target% already has a health value of %new_health%.'
+    number_out_of_range: '&bAzule &8> &cPlease select a number between 1-20.'
+    usage: '&bAzule &8> &cUsage: /sethealth [Player] <amount>'
