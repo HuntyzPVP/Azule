@@ -73,7 +73,7 @@ public class SetHealth implements CommandExecutor {
                     return true;
                 }
 
-                if (!(sender.hasPermission("Azule.Command.sethealth_target") || sender.hasPermission("Azule.*"))) { // Checks to see if the sender has permission
+                if (!(sender.hasPermission("Azule.Command.sethealth") || sender.hasPermission("Azule.*"))) { // Checks to see if the sender has permission
                     sender.sendMessage(Utils.chatColor(config.getString("general.messages.no_permission")));
                     return true;
                 }
@@ -105,6 +105,12 @@ public class SetHealth implements CommandExecutor {
                         .replace("%new_health%", args[0])));
                 return true;
             default:
+
+                if (!(sender.hasPermission("Azule.Command.sethealth") || sender.hasPermission("Azule.*"))) { // Checks to see if the sender has permission
+                    sender.sendMessage(Utils.chatColor(config.getString("general.messages.no_permission")));
+                    return true;
+                }
+
                 sender.sendMessage(Utils.chatColor(config.getString("sethealth.messages.usage"))); // If arguments are wrong, it lets the sender know the correct usage
                 return true;
         }

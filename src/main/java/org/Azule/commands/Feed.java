@@ -8,11 +8,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Heal implements CommandExecutor {
+public class Feed implements CommandExecutor {
 
     private final Config config;
 
-    public Heal(Config config) {
+    public Feed(Config config) {
         this.config = config;
     }
 
@@ -30,7 +30,7 @@ public class Heal implements CommandExecutor {
         if (args.length > 0) {
             Player target = Bukkit.getPlayer(args[0]);
 
-            if (!(sender.hasPermission("Azule.Command.heal_target") || sender.hasPermission("Azule.*"))) { // Checks if the sender has permission to use this ommand
+            if (!(sender.hasPermission("Azule.Command.feed_target") || sender.hasPermission("Azule.*"))) { // Checks if the sender has permission to use this command
                 sender.sendMessage(Utils.chatColor(config.getString("general.messages.no_permission")));
                 return true;
             }
@@ -40,17 +40,18 @@ public class Heal implements CommandExecutor {
                 return true;
             }
 
-            if (target.getHealth() >= 20) { // Checks if the players health is already max
-                sender.sendMessage(Utils.chatColor(config.getString("heal.messages.health_target_max")
+            if (target.getFoodLevel() >= 20) { // Checks if the players food level is already max
+                sender.sendMessage(Utils.chatColor(config.getString("feed.messages.food_target_max")
                         .replace("%target%", target.getName())));
                 return true;
             }
 
-            target.setHealth(20.0); // Sets health to max
-            target.sendMessage(Utils.chatColor(config.getString("heal.messages.healed"))); // Sends the target a message letting them know there health ahs been updated
+            target.setFoodLevel(20); // Sets food level to max
+            target.setSaturation(10); // Sets saturation level to max
+            target.sendMessage(Utils.chatColor(config.getString("feed.messages.fed"))); // Sends the target a message letting them know there feed level has been updated
 
-            if (!target.equals(sender)) { // Checks if the target is not themselves, if it is, it will not send them a message saying they have healed the target
-                sender.sendMessage(Utils.chatColor(config.getString("heal.messages.healed_target")
+            if (!target.equals(sender)) { // Checks if the target is not themselves, if it is, it will not send them a message saying they have fed the target
+                sender.sendMessage(Utils.chatColor(config.getString("feed.messages.fed_target")
                         .replace("%target%", target.getName())));
                 return true;
             }
@@ -64,18 +65,19 @@ public class Heal implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        if (!(sender.hasPermission("Azule.Command.heal") || sender.hasPermission("Azule.*"))) { // Checks if the sender has permission to run the command
+        if (!(sender.hasPermission("Azule.Command.feed") || sender.hasPermission("Azule.*"))) { // Checks if the sender has permission to run the command
             sender.sendMessage(Utils.chatColor(config.getString("general.messages.no_permission")));
             return true;
         }
 
-        if (player.getHealth() >= 20) { // Checks if the senders health isn't already max
-            sender.sendMessage(Utils.chatColor(config.getString("heal.messages.health_max")));
+        if (player.getFoodLevel() >= 20) { // Checks if the senders food level isn't already max
+            sender.sendMessage(Utils.chatColor(config.getString("feed.messages.food_max")));
             return true;
         }
 
-        player.setHealth(20.0); // Sets health to max
-        player.sendMessage(Utils.chatColor(config.getString("heal.messages.healed"))); // Sends the sender a message letting them know they have been healed
+        player.setFoodLevel(20); // Sets food level to max
+        player.setSaturation(10); // Sets saturation level to max
+        player.sendMessage(Utils.chatColor(config.getString("feed.messages.fed"))); // Sends the sender a message letting them know they have been fed
         return true;
     }
 }

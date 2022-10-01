@@ -29,3 +29,17 @@ sethealth:
     health_target_already: '&bAzule &8> &c%target% already has a health value of %new_health%.'
     number_out_of_range: '&bAzule &8> &cPlease select a number between 1-20.'
     usage: '&bAzule &8> &cUsage: /sethealth [Player] <amount>'
+
+feed:
+  messages:
+    food_max: '&bAzule &8> &cYou are already at max food level.'
+    food_target_max: '&bAzule &8> &c%target% is already at max food level.'
+    fed: '&bAzule &8> &7You have been fed.'
+    fed_target: '&bAzule &8> &7%target% has been fed.'
+
+fly:
+  messages:
+    flight_on: '&bAzule &8> &7Flight has been &aENABLED.'
+    flight_off: '&bAzule &8> &7Flight has been &cDISABLED.'
+    flight_target_on: '&bAzule &8> &7%target% can now fly.'
+    flight_target_off: '&bAzule &8> 77%target% can no longer fly.'

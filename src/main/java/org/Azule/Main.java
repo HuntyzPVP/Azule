@@ -34,6 +34,8 @@ public class Main extends JavaPlugin {
         getCommand("gma").setExecutor(new GameModeA(gameModeHandler));
         getCommand("heal").setExecutor(new Heal(config));
         getCommand("sethealth").setExecutor(new SetHealth(config));
+        getCommand("feed").setExecutor(new Feed(config));
+        getCommand("fly").setExecutor(new Fly(config));
     }
 
 }
