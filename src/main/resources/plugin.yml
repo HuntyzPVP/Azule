@@ -1,0 +1,20 @@
+name: Azule
+main: org.Azule.Main
+version: 1.0
+commands:
+  gmc:
+    usage: gmc
+    description: Sets targeted member to gamemode creative.
+    aliases: [gamemodec, creative, gm1]
+  gms:
+    usage: gms
+    aliases: [gamemodes, survival, gm2]
+    description: Sets targeted member to gamemode survival.
+  gma:
+    usage: gma
+    aliases: [gamemodea, adventure, gm3]
+    description: Sets targeted member to gamemode adventure.
+  gmsp:
+    usage: gmsp
+    aliases: [gamemodesp, spectator, gm4]
+    description: Sets targeted member to gamemode spectator.

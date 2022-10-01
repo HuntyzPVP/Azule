@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Azule:jar">
+    <output-path>$PROJECT_DIR$/../LocalServer/plugins</output-path>
+    <root id="archive" name="Azule.jar">
+      <element id="module-output" name="Azule" />
+    </root>
+  </artifact>
+</component>
