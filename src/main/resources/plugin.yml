@@ -34,3 +34,7 @@ commands:
     usage: fly
     aliases: [flight]
     description: Enables and disables the ability of a certain user to fly.
+  vanish:
+    usage: vanish
+    aliases: [v]
+    description: Vanishes a targeted player.

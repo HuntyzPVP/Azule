@@ -9,10 +9,10 @@ general:
 
 gamemode:
   messages:
-    gamemode_already: '&bAzule &8> &cYou are already in gamemode %gamemode%.'
-    gamemode_target_already: '&bAzule &8> &c%target% is already in %gamemode%.'
-    gamemode_update: '&bAzule &8> &7Your gamemode has been updated to %gamemode%.'
-    gamemode_target_update: '&bAzule &8> &7%target% is now in %gamemode%.'
+    gamemode_already: '&bAzule &8> &cYou are already in &l%gamemode%.'
+    gamemode_target_already: '&bAzule &8> &c%target% is already in &l%gamemode%.'
+    gamemode_update: '&bAzule &8> &7Your gamemode has been updated to &l%gamemode%.'
+    gamemode_target_update: '&bAzule &8> &7%target% is now in &l%gamemode%.'
 
 heal:
   messages:
@@ -39,7 +39,14 @@ feed:
 
 fly:
   messages:
-    flight_on: '&bAzule &8> &7Flight has been &aENABLED.'
-    flight_off: '&bAzule &8> &7Flight has been &cDISABLED.'
+    flight_on: '&bAzule &8> &7Flight has been &a&lENABLED.'
+    flight_off: '&bAzule &8> &7Flight has been &c&lDISABLED.'
     flight_target_on: '&bAzule &8> &7%target% can now fly.'
-    flight_target_off: '&bAzule &8> 77%target% can no longer fly.'
+    flight_target_off: '&bAzule &8> &7%target% can no longer fly.'
+
+vanish:
+  messages:
+    vanish_on: '&bAzule &8> &7Vanish has been &a&lENABLED.'
+    vanish_off: '&bAzule &8> &7Vanish has been &c&lDISABLED.'
+    vanish_target_on: '&bAzule &8> &7%target% is now vanished.'
+    vanish_target_off: '&bAzule &8> &7%target% is no longer vanished.'

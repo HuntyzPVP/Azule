@@ -47,7 +47,7 @@ public class Feed implements CommandExecutor {
             }
 
             target.setFoodLevel(20); // Sets food level to max
-            target.setSaturation(10); // Sets saturation level to max
+            target .setSaturation(10); // Sets saturation level to max
             target.sendMessage(Utils.chatColor(config.getString("feed.messages.fed"))); // Sends the target a message letting them know there feed level has been updated
 
             if (!target.equals(sender)) { // Checks if the target is not themselves, if it is, it will not send them a message saying they have fed the target
